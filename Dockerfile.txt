@@ -2,7 +2,7 @@
 FROM ubuntu:22.04
 
 #  2. Quién lo mantiene (puedes poner tu nombre)
-LABEL maintainer="Ana Lequipe Calancha <ana@example.com>"
+LABEL maintainer="AnaLequipe <analequipe752@gmail.com>"
 
 #  3. Actualizamos e instalamos las herramientas
 RUN apt-get update && apt-get install -y \
