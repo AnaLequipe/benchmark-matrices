@@ -12,6 +12,4 @@ Evaluar comparativamente el rendimiento de C++, Go, Java y Python en la multipli
 
 ## Reproducibilidad
 1. Crear entorno:
-   ```bash
-   conda env create -f environment.yml
-   conda activate matrix-benchmark
+   
