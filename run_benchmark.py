@@ -12,7 +12,7 @@ GO_EXE = "matrix_benchmark.exe" if platform.system() == "Windows" else "matrix_b
 Ns = [500, 1000, 2000]   # tamaños de matrices
 repeticiones = 5
 semilla = 42
-max_val = 10
+max_val = 2
 
 languages = {
     "cpp": {
