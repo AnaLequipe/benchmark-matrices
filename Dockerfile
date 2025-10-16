@@ -23,4 +23,5 @@ WORKDIR /app
 COPY . /app
 
 # 6. Comando por defecto: ejecutar el benchmark
+ENV PYTHONUNBUFFERED=1
 CMD ["python3", "run_benchmark.py"]
