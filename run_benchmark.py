@@ -10,7 +10,7 @@ GO_EXE = "matrix_benchmark.exe" if platform.system() == "Windows" else "matrix_b
 
 # -------------------- CONFIGURACIÓN --------------------
 #Ns = [500, 1000, 2000]   # tamaños de matrices
-Ns = [5]   # tamaños de matrices
+Ns = [10]   # tamaños de matrices
 repeticiones = 5
 semilla = 42
 max_val = 20
@@ -52,6 +52,8 @@ for lang, cmds in languages.items():
     if cmds["compile"]:
         print(f"🔹 Compilando {lang}...")
         subprocess.run(cmds["compile"], check=True)
+    else:
+        print(f"⚡ {lang} no requiere compilación.")
 
 # -------------------- EJECUTAR Y MEDIR --------------------
 print("🏃 Ejecutando benchmarks, esto puede tardar unos minutos...\n")
