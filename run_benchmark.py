@@ -9,10 +9,11 @@ import shutil
 GO_EXE = "matrix_benchmark.exe" if platform.system() == "Windows" else "matrix_benchmark"
 
 # -------------------- CONFIGURACIÓN --------------------
-Ns = [500, 1000, 2000]   # tamaños de matrices
+#Ns = [500, 1000, 2000]   # tamaños de matrices
+Ns = [5]   # tamaños de matrices
 repeticiones = 5
 semilla = 42
-max_val = 2
+max_val = 20
 
 languages = {
     "cpp": {
@@ -35,6 +36,8 @@ languages = {
 os.makedirs("results", exist_ok=True)
 csv_file = "results/benchmark.csv"
 
+print("🚀 Iniciando ejecución del benchmark...\n")
+
 # Si existe un resultado anterior, lo respaldamos con fecha y hora
 if os.path.exists(csv_file):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -44,12 +47,16 @@ if os.path.exists(csv_file):
 
 
 # -------------------- COMPILAR --------------------
+print("⚙️  Compilando todos los lenguajes necesarios...\n")
 for lang, cmds in languages.items():
     if cmds["compile"]:
         print(f"🔹 Compilando {lang}...")
         subprocess.run(cmds["compile"], check=True)
 
 # -------------------- EJECUTAR Y MEDIR --------------------
+print("🏃 Ejecutando benchmarks, esto puede tardar unos minutos...\n")
+
+
 with open(csv_file, mode="w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["Id", "Lenguaje", "N", "Tiempo_segundos"])
@@ -76,4 +83,5 @@ with open(csv_file, mode="w", newline="") as f:
                 writer.writerow([id_counter, lang, N, duracion])
                 id_counter += 1
 
+print("\n✅ Benchmark completado correctamente.")
 print(f"\n✅ Resultados guardados en {csv_file}")

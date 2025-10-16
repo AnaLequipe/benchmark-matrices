@@ -20,12 +20,35 @@ Evaluar comparativamente el rendimiento de cuatro lenguajes de programación (C+
 ### Pasos completos para reproducir el experimento
 
 ```bash
-# Abrir CMD o PowerShell
-# -----------------------------
-# Opción 1: Usando imagen desde Docker Hub
-# -----------------------------
-docker run --rm -v benchmark-results:/app/results annie752/benchmark-matrices
+# 1. Descargar la imagen desde Docker Hub
+docker pull annie752/benchmark-matrices_new:latest
 
+# 2. Crear una carpeta local para guardar los resultados
+# (Esto la crea en tu escritorio o donde estés ejecutando el comando)
+mkdir benchmark-results
+
+# 3. Ejecutar el contenedor usando la imagen desde Docker Hub
+# y guardar los resultados dentro de la carpeta local "benchmark-results"
+docker run --rm -v "%cd%/benchmark-results:/app/results" annie752/benchmark-matrices_new:latest
+
+# Explicación:
+# - --rm              → elimina el contenedor después de ejecutarse (limpio)
+# - -v ...:/app/results → monta tu carpeta local para guardar resultados del benchmark
+# - annie752/benchmark-matrices_new:latest → tu imagen publicada en Docker Hub
+
+# 4. Verificar que los resultados se generaron
+# En Windows (CMD o PowerShell)
+dir benchmark-results
+
+# En Linux o Mac
+ls benchmark-results
+
+# Archivos esperados:
+# benchmark.csv   -> tiempos de ejecución por lenguaje
+
+# 6️⃣ Visualizar los resultados
+# Puedes abrirlos desde el "Desktop Docker" o desde tu PC local:
+# - benchmark-results/benchmark.csv  → abrir con Excel o LibreOffice
 # -----------------------------
 # Opción 2: Clonando el repositorio desde GitHub y construyendo la imagen localmente
 # -----------------------------
@@ -49,5 +72,4 @@ dir benchmark-results
 # Los archivos esperados:
 # benchmark.csv   -> resultados de tiempos
 
-# 5. Abrir y analizar resultados
-# CSV -> Excel
+
