@@ -3,6 +3,8 @@ import csv
 import os
 import time
 import platform
+from datetime import datetime
+import shutil
 
 GO_EXE = "matrix_benchmark.exe" if platform.system() == "Windows" else "matrix_benchmark"
 
@@ -32,6 +34,14 @@ languages = {
 }
 os.makedirs("results", exist_ok=True)
 csv_file = "results/benchmark.csv"
+
+# Si existe un resultado anterior, lo respaldamos con fecha y hora
+if os.path.exists(csv_file):
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    backup_file = f"results/benchmark_{timestamp}.csv"
+    shutil.copy2(csv_file, backup_file)
+    print(f"📦 Copia de seguridad creada: {backup_file}")
+
 
 # -------------------- COMPILAR --------------------
 for lang, cmds in languages.items():

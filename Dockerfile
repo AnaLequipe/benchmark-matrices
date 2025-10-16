@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     golang \
     openjdk-17-jdk \
     time \
+    && ln -s /usr/bin/python3 /usr/bin/python \
     && apt-get clean
 
 # 4. Instalamos las librerías de Python si las hay
