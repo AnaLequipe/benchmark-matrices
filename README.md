@@ -29,8 +29,8 @@ mkdir benchmark-results
 
 # 3. Ejecutar el contenedor usando la imagen desde Docker Hub
 # y guardar los resultados dentro de la carpeta local "benchmark-results"
-docker run --rm -v "%cd%/benchmark-results:/app/results" annie752/benchmark-matrices_new:latest
-
+#docker run --rm -v "%cd%/benchmark-results:/app/results" annie752/benchmark-matrices_new:latest
+docker run -v "C:\Users\%USERNAME%\Desktop\benchmark-results:/app/results" annie752/benchmark-matrices_prueba
 # Explicación:
 # - --rm              → elimina el contenedor después de ejecutarse (limpio)
 # - -v ...:/app/results → monta tu carpeta local para guardar resultados del benchmark

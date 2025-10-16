@@ -33,8 +33,9 @@ languages = {
         "run": ["python", "src/python/matrix_benchmark.py"]
     }
 }
+csv_dir = "/app/results"  
 os.makedirs("results", exist_ok=True)
-csv_file = "results/benchmark.csv"
+csv_file = os.path.join(csv_dir, "benchmark.csv")
 
 print("🚀 Iniciando ejecución del benchmark...\n")
 
