@@ -9,11 +9,11 @@ import shutil
 GO_EXE = "matrix_benchmark.exe" if platform.system() == "Windows" else "matrix_benchmark"
 
 # -------------------- CONFIGURACIÓN --------------------
-#Ns = [500, 1000, 2000]   # tamaños de matrices
-Ns = [10]   # tamaños de matrices
+Ns = [500, 1000, 2000]   # tamaños de matrices
+#Ns = [10]   # tamaños de matrices
 repeticiones = 5
 semilla = 42
-max_val = 20
+max_val = 10
 
 languages = {
     "cpp": {
