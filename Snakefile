@@ -31,7 +31,7 @@ rule compile_java:
     shell:
         "javac src/java/MatrixBenchmark.java"
 
-# 5️⃣ Ejecutar el benchmark (usa tu run.py)
+# 5️⃣ Ejecutar el benchmark (usa tu run_benchmark.py)
 rule run_benchmark:
     input:
         "src/cpp/matrix_benchmark",
@@ -40,7 +40,7 @@ rule run_benchmark:
     output:
         "results/benchmark.csv"
     shell:
-        "python run.py"
+        "python run_benchmark.py"
 
 # 6️⃣ ANOVA y Tukey
 rule analyze:
@@ -51,4 +51,4 @@ rule analyze:
         "results/tukey.csv",
         "results/plots.png"
     shell:
-        "python run.py"
+        "python run_benchmark.py"
