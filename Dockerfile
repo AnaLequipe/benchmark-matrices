@@ -14,11 +14,10 @@ RUN apt-get update && apt-get install -y \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && apt-get clean
 
-# 4. Instalamos dependencias de Python
-#    Si falla el requirements.txt, se instalan manualmente los paquetes base
+# 4. Instalamos dependencias de Python + Snakemake
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt || \
-    pip3 install --no-cache-dir numpy pandas scipy matplotlib statsmodels
+    pip3 install --no-cache-dir numpy pandas scipy matplotlib statsmodels snakemake
 
 # 5. Copiamos el proyecto
 WORKDIR /app
@@ -27,5 +26,5 @@ COPY . /app
 # 6. Desactiva el buffer para ver logs en tiempo real
 ENV PYTHONUNBUFFERED=1
 
-# 7. Comando por defecto
+# 7. Comando por defecto (puedes ejecutar run_benchmark.py o snakemake)
 CMD ["python3", "run_benchmark.py"]
