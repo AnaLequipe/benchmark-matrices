@@ -1,0 +1,34 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+all            1              1              1
+analyze        1              1              1
+total          2              1              1
+
+Select jobs to execute...
+
+[Fri Oct 24 14:38:42 2025]
+rule analyze:
+    input: results/benchmark.csv
+    output: results/anova.csv, results/tukey.csv, results/plots.png
+    jobid: 5
+    reason: Missing output files: results/anova.csv, results/tukey.csv, results/plots.png
+    resources: tmpdir=/tmp
+
+python run_benchmark.py
+[Fri Oct 24 14:38:48 2025]
+Error in rule analyze:
+    jobid: 5
+    input: results/benchmark.csv
+    output: results/anova.csv, results/tukey.csv, results/plots.png
+    shell:
+        python run_benchmark.py
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-10-24T143838.827628.snakemake.log
