@@ -21,9 +21,9 @@ Evaluar comparativamente el rendimiento de cuatro lenguajes de programación (C+
 
 ```bash
 # 1. Descargar la imagen desde Docker Hub
-docker pull annie752/benchmark-matrices_new:latest
+docker pull annie752/benchmark-matrices_prueba:latest
 
-# 2. Crear una carpeta local para guardar los resultados
+# 2. Crear una carpeta local en el escritorio para guardar los resultados
 # (Esto la crea en tu escritorio o donde estés ejecutando el comando)
 mkdir benchmark-results
 
