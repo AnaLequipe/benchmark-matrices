@@ -1,27 +1,31 @@
-#  1. Usamos una base con todo lo necesario (Ubuntu con compiladores)
+# 1. Imagen base con compiladores y Python
 FROM ubuntu:22.04
 
-#  2. Quién lo mantiene (puedes poner tu nombre)
-LABEL maintainer="AnaLequipe <analequipe752@gmail.com>"
+# 2. Mantenedor
+LABEL maintainer="Ana Lequipe <analequipe752@gmail.com>"
 
-#  3. Actualizamos e instalamos las herramientas
+# 3. Instalamos Python, pip y herramientas necesarias
 RUN apt-get update && apt-get install -y \
     python3 python3-pip \
     g++ \
     golang \
     openjdk-17-jdk \
     time \
-    && ln -s /usr/bin/python3 /usr/bin/python \
+    && ln -sf /usr/bin/python3 /usr/bin/python \
     && apt-get clean
 
-# 4. Instalamos las librerías de Python si las hay
+# 4. Instalamos dependencias de Python
+#    Si tienes requirements.txt, se usará. Si falta, instala las básicas necesarias.
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt || true
+RUN pip3 install --no-cache-dir -r /tmp/requirements.txt || \
+    pip3 install --no-cache-dir numpy pandas scipy matplotlib statsmodels
 
-# 5. Copiamos todo el proyecto dentro del contenedor
+# 5. Copiamos el proyecto al contenedor
 WORKDIR /app
 COPY . /app
 
-# 6. Comando por defecto: ejecutar el benchmark
+# 6. Evita buffering (útil para ver logs en tiempo real)
 ENV PYTHONUNBUFFERED=1
+
+# 7. Comando por defecto
 CMD ["python3", "run_benchmark.py"]
