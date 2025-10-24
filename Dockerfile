@@ -19,7 +19,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt || \
     pip3 install --no-cache-dir numpy pandas scipy matplotlib statsmodels snakemake
-
+RUN pip3 install --upgrade pulp
 # 5. Copiamos el proyecto
 WORKDIR /app
 COPY . /app
