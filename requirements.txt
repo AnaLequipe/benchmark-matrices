@@ -3,5 +3,3 @@ pandas
 matplotlib
 scipy
 statsmodels
-seaborn
-snakemake
