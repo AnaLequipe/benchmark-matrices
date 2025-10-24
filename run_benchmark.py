@@ -5,7 +5,6 @@ import time
 import platform
 from datetime import datetime
 import shutil
-
 import pandas as pd
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
@@ -116,7 +115,7 @@ print(f"\n🔍 Tukey HSD guardado en {tukey_csv}")
 
 # Gráfico de medias por Lenguaje y N
 plt.figure(figsize=(8,5))
-sns.pointplot(data=df, x="N", y="Tiempo_segundos", hue="Lenguaje", ci=95, dodge=True)
+sns.pointplot(data=df, x="N", y="Tiempo_segundos", hue="Lenguaje", errorbar=('ci', 95), dodge=True)
 plt.title("Benchmark: Tiempo promedio por Lenguaje y N")
 plt.ylabel("Tiempo (segundos)")
 plt.xlabel("Tamaño de matriz N")

@@ -1,0 +1,7 @@
+group1,group2,meandiff,p-adj,lower,upper,reject
+cpp,go,95.9251,0.9502,-379.0304,570.8806,False
+cpp,java,74.4724,0.9757,-400.4831,549.4279,False
+cpp,python,749.1325,0.0006,274.177,1224.088,True
+go,java,-21.4527,0.9994,-496.4082,453.5028,False
+go,python,653.2074,0.0032,178.2519,1128.1629,True
+java,python,674.6601,0.0022,199.7046,1149.6156,True
