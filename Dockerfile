@@ -1,4 +1,4 @@
-# 1. Imagen base con compiladores y Python
+# 1. Imagen base
 FROM ubuntu:22.04
 
 # 2. Mantenedor
@@ -15,16 +15,16 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # 4. Instalamos dependencias de Python
-#    Si tienes requirements.txt, se usará. Si falta, instala las básicas necesarias.
+#    Si falla el requirements.txt, se instalan manualmente los paquetes base
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt || \
     pip3 install --no-cache-dir numpy pandas scipy matplotlib statsmodels
 
-# 5. Copiamos el proyecto al contenedor
+# 5. Copiamos el proyecto
 WORKDIR /app
 COPY . /app
 
-# 6. Evita buffering (útil para ver logs en tiempo real)
+# 6. Desactiva el buffer para ver logs en tiempo real
 ENV PYTHONUNBUFFERED=1
 
 # 7. Comando por defecto
