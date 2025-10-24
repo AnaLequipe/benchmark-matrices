@@ -3,4 +3,5 @@ pandas
 matplotlib
 scipy
 statsmodels
-snakemake
+snakemake==7.26.0
+pulp==2.7.0
