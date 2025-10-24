@@ -3,5 +3,6 @@ pandas
 matplotlib
 scipy
 statsmodels
+seaborn
 snakemake==7.26.0
 pulp==2.7.0
