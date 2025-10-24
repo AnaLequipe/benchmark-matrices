@@ -28,4 +28,6 @@ COPY . /app
 ENV PYTHONUNBUFFERED=1
 
 # 7. Comando por defecto (puedes ejecutar run_benchmark.py o snakemake)
-CMD ["python3", "run_benchmark.py"]
+#CMD ["python3", "run_benchmark.py"]
+CMD ["python3", "-m", "snakemake", "--cores", "1", "--rerun-incomplete"]
+
