@@ -40,7 +40,7 @@ rule run_benchmark:
     output:
         "results/benchmark.csv"
     shell:
-        "python run_benchmark.py"
+        "python3 run_benchmark.py"
 
 # 6️⃣ ANOVA y Tukey
 rule analyze:
@@ -51,4 +51,4 @@ rule analyze:
         "results/tukey.csv",
         "results/plots.png"
     shell:
-        "python run_benchmark.py"
+        "python3 run_benchmark.py"
