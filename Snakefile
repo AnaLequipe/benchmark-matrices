@@ -51,4 +51,4 @@ rule analyze:
         "results/tukey.csv",
         "results/plots.png"
     shell:
-        "python3 run_benchmark.py"
+        "python3 analyze_results.py"

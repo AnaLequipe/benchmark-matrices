@@ -71,8 +71,8 @@ ls benchmark-results
 git clone https://github.com/AnaLequipe/benchmark-matrices.git
 cd benchmark-matrices
 mkdir benchmark-results
-docker build -t benchmark-matrices .
-docker run --rm -v benchmark-results:/app/results benchmark-matrices
+docker build -t benchmark-matrices_prueba .
+docker run --rm -v benchmark-results:/app/results benchmark-matrices_prueba
 ls benchmark-results
 
 
