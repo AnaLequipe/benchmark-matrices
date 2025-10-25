@@ -27,6 +27,39 @@ Evaluar comparativamente el rendimiento de cuatro lenguajes de programación (C+
   - `results/report.txt` → tablas ANOVA y Tukey HSD  
   - `results/plot.png` → gráficos de medias con intervalos de confianza
 
+# RESULTADOS Y CONCLUSIONES
+
+- 1. Resultados generales
+
+El análisis ANOVA (anova.csv) muestra valores p extremadamente bajos (p < 0.001) tanto para el factor Lenguaje, como para el tamaño de la matriz (N) y su interacción (Lenguaje:N).
+Esto indica que existen diferencias estadísticamente significativas entre los lenguajes evaluados en términos de tiempo de ejecución.
+
+2. Desempeño por lenguaje
+
+De acuerdo con los tiempos registrados en benchmark.csv:
+
+C++ obtuvo los mejores tiempos promedio, confirmando su eficiencia en operaciones numéricas intensivas.
+
+Go mostró un rendimiento similar al de C++, ligeramente inferior pero consistente.
+
+Java fue más lento que C++ y Go, probablemente debido al sobrecosto del JVM.
+
+Python fue considerablemente más lento, confirmando que los lenguajes interpretados tienen desventajas en cómputo numérico intensivo.
+
+3. Comparaciones post-hoc (Tukey HSD)
+
+El análisis de comparaciones múltiples (tukey.csv) indica:
+
+Python difiere significativamente de C++ y Go (p < 0.01), con diferencias medias de entre +670 y +760 segundos.
+
+No se encontraron diferencias significativas entre C++, Go y Java, lo que sugiere que, aunque Java es más lento, las variaciones no fueron suficientes para ser estadísticamente relevantes bajo el nivel α = 0.05.
+
+4. Conclusión final
+
+Los resultados rechazan la hipótesis nula (H₀) y aceptan la hipótesis alternativa (H₁):
+existen diferencias significativas de rendimiento entre los lenguajes evaluados.
+En particular, C++ y Go ofrecen los mejores tiempos de ejecución, mientras que Python presenta un rendimiento sustancialmente menor.
+
 ## Reproducibilidad y ejecución con Docker
 
 ### Pasos completos para reproducir el experimento
